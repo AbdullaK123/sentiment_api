@@ -7,6 +7,6 @@ __all__ = [
     'InferenceService',
     'Prediction',
     'PredictionRequest',
-    'PredicitionResponse',
+    'PredictionResponse',
     'get_inference_service'
 ]
