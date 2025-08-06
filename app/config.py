@@ -10,5 +10,7 @@ class ApiSettings(BaseSettings):
     task: str = Field(..., description="The type of inference we are doing")
     model: str = Field(..., description="The model we are using")
     device: str = Field(..., description="The device to use. Uses CUDA if it is available")
+    min_text_length: str = Field(..., description="Minimum length of message to analyze")
+    max_text_length: str = Field(..., description="Max length of text to analyze")
 
 app_settings = ApiSettings()

@@ -18,3 +18,4 @@ htmlcov/
 .tox/
 .mypy_cache/
 .ruff_cache/
+*.sh

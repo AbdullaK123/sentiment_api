@@ -1,6 +1,5 @@
 from sqlmodel import SQLModel
 from typing import List
-from enum import Enum
 
 class PredictionRequest(SQLModel):
     texts: List[str]
