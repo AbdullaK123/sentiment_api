@@ -31,30 +31,14 @@ class InferenceService:
 
     def __init__(self, model: Pipeline):
         self.model = model
-        self.min_text_length = int(app_settings.min_text_length)
-        self.max_text_length = int(app_settings.max_text_length)
-
-    def _validate_text(self, text: str) -> bool:
-        if len(text) < self.min_text_length:
-            raise HTTPException(
-                status_code=status.HTTP_400_BAD_REQUEST,
-                detail=f"One of your texts is too short. All must be at least {self.min_text_length} characters."
-            )
-        if len(text) > self.max_text_length:
-            raise HTTPException(
-                status_code=status.HTTP_400_BAD_REQUEST,
-                detail=f"One of your texts is too long. All must be less than {self.max_text_length} characters"
-            )
-        return True
 
     def _get_prediction(self, text: str) -> Prediction:
-        if self._validate_text(text):
-            prediction = self.model(text)[0]
-            return Prediction(
-                text=text,
-                sentiment=prediction['label'],
-                confidence=prediction['score']
-            )
+        prediction = self.model(text)[0]
+        return Prediction(
+            text=text,
+            sentiment=prediction['label'],
+            confidence=prediction['score']
+        )
     
     def predict(self, request: PredictionRequest) -> PredictionResponse:
         return PredictionResponse(
