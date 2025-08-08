@@ -3,7 +3,6 @@ from app.models import PredictionRequest, Prediction, PredictionResponse
 from app.config import app_settings
 import torch
 from transformers import AutoModelForSequenceClassification, AutoTokenizer
-from fastapi import HTTPException, status
 from app.config import app_settings
 
 def get_model(
